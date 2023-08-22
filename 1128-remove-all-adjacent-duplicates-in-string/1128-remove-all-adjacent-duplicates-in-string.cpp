@@ -1,32 +1,23 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
-        // Time Complexity : O(N) & Space Complexity : O(N)
+        // Time Complexity : O(N) & Space Complexity : O(1)
 
+        // NOTE : push_back() & pop_back() can also be used with strings!
+        string temp="";
         int i=0;
-        stack<char>st;
 
-        while(i<s.size()){
-            if(st.empty() || s[i]!=st.top()){
-                st.push(s[i]);
+        while(i<s.length()){
+            if(temp.empty() || s[i]!=temp.back()){
+                temp.push_back(s[i]);
             }
 
             else{
-                st.pop();
+                temp.pop_back();
             }
 
             i++;
         }
-
-        string ans="";
-
-        while(!st.empty()){
-            char ele=st.top();
-            st.pop();
-            ans+=ele;
-        }
-
-        reverse(ans.begin(), ans.end());
-        return ans;
+        return temp;
     }
 };
