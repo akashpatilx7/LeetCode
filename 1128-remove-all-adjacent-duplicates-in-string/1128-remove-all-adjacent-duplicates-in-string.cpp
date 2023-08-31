@@ -1,24 +1,29 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
-        // Time Complexity : O(N*N) & Space Complexity : O(1)
+        // Time Complexity : O(1) & Space Complexity : O(N)
 
-        int i=0;
-        int j=i+1;
+        stack<char>st;
+        string ans;
 
-        while(j<s.length()){
-            if(s[i]==s[j]){
-                s.erase(i,2); // will erase the characters at the index i & i+1 i.e. j & update the string s in its place itself
+        for(int i=0;i<s.length();i++){
+            if(st.empty()){
+                st.push(s[i]);
+            }
 
-                i=max(0,i-1);
-                j=max(i+1,j-1);
+            else if(s[i]==st.top()){
+                st.pop();
             }
 
             else{
-                i++;
-                j++;
+                st.push(s[i]);
             }
         }
-        return s;
+
+        while(!st.empty()){ // iterate till st.empty() is false i.e. there are elements still left in the stack
+            ans=st.top()+ans;
+            st.pop();
+        }
+        return ans;
     }
 };
