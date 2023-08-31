@@ -1,23 +1,24 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
-        // Time Complexity : O(N) & Space Complexity : O(1)
+        // Time Complexity : O(N*N) & Space Complexity : O(1)
 
-        // NOTE : push_back() & pop_back() can also be used with strings!
-        string temp="";
         int i=0;
+        int j=i+1;
 
-        while(i<s.length()){
-            if(temp.empty() || s[i]!=temp.back()){
-                temp.push_back(s[i]);
+        while(j<s.length()){
+            if(s[i]==s[j]){
+                s.erase(i,2); // will erase the characters at the index i & i+1 i.e. j & update the string s in its place itself
+
+                i=max(0,i-1);
+                j=max(i+1,j-1);
             }
 
             else{
-                temp.pop_back();
+                i++;
+                j++;
             }
-
-            i++;
         }
-        return temp;
+        return s;
     }
 };
