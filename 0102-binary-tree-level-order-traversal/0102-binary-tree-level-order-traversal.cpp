@@ -14,9 +14,9 @@ public:
     vector<vector<int>> levelOrder(TreeNode* root) {
         // Time Complexity : O(N) & Space Complexity : O(N)
 
-        // declaring a vector of vectors to return the level order traversal of a binary tree
+         // declaring a vector of vectors to return the level order traversal of a binary tree
         vector<vector<int>>ans;
-        
+
         if(root==NULL){
             return ans;
         }
