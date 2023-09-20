@@ -11,24 +11,36 @@
  */
 class Solution {
 public:
-    void preorder(TreeNode* root,vector<int>&ans){
-        // Time Complexity : O(N) & Space Complexity : O(N)
-        
-        if(root==NULL){
-            return;
-        }
-
-        else{
-            ans.push_back(root->val);
-            preorder(root->left,ans);
-            preorder(root->right,ans);
-        }
-    }
-
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        // a helper function, having root & vector as parameters
-        preorder(root,ans); 
-        return ans;        
+        // Time Complexity : O(N) & Space Complexity :O(N) (remove from the stack & push it into preorder)
+
+        vector<int>preorder;
+
+        if(root==NULL){
+            return preorder;
+        }
+
+        // creating a stack & pushing the 1st element in it
+        stack<TreeNode*>st;
+        st.push(root);
+
+        while(!st.empty()){
+            // updating the root
+            root=st.top();
+            st.pop();
+
+            preorder.push_back(root->val);
+
+            // ROOT->LEFT->RIGHT ----> ROOT->RIGHT->LEFT (due to stack's LIFO property)
+
+            if(root->right!=NULL){
+                st.push(root->right);
+            }
+
+            if(root->left!=NULL){
+                st.push(root->left);
+            }
+        }
+        return preorder;
     }
 };
