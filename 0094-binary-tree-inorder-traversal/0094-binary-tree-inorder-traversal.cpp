@@ -11,22 +11,40 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root, vector<int>&ans){
-        // Time Complexity : O(N) & Space Complexity : O(N)
-        if(root==NULL){
-            return;
-        }
-
-        else{
-            inorder(root->left,ans);
-            ans.push_back(root->val);
-            inorder(root->right,ans);
-        }
-    }
-
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        inorder(root,ans);
-        return ans;
+        // Time Complexity : O(N) & Space Complexity :O(N) (remove from the stack & push it into inorder)
+        
+        vector<int>inorder;
+
+        stack<TreeNode*>st;
+        TreeNode* node=root; // for traversal of the tree
+
+        while(true){
+            if(node!=NULL){
+                // push it into stack 
+                st.push(node);
+
+                // update the node
+                node=node->left;
+            }
+
+            else{
+                // check if traversal of tree is finished
+                if(st.empty()==true){
+                    break;
+                }
+
+                // update the node (LEFT)
+                node=st.top();
+                st.pop();
+
+                // ROOT
+                inorder.push_back(node->val);
+
+                // update the node (RIGHT)
+                node=node->right;
+            }
+        }
+        return inorder;
     }
 };
