@@ -12,7 +12,7 @@
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
-        // Time Complexity : O(N) & Space Complexity :O(N) (remove from the stack & push it into preorder)
+         // Time Complexity : O(N) & Space Complexity :O(N) (remove from the stack & push it into preorder)
 
         vector<int>preorder;
 
