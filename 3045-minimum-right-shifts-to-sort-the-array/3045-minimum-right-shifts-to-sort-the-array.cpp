@@ -4,7 +4,7 @@ public:
         // Time Complexity : O(N) & Space Complexity : O(1)
 
         int n=nums.size();
-        int pivotId=0,pivotCount=0;
+        int pivotId=0, pivotCount=0;
 
         // finding the dropping point (pivotId)
         for(int i=1;i<n;i++){
