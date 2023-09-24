@@ -1,6 +1,8 @@
 class Solution {
 public:
     string frequencySort(string s) {
+        // Time Complexity : O(N) & Space Complexity : O(N)
+
         unordered_map<char,int>umap;
         vector<string>bucket(s.size()+1,"");
 
@@ -10,9 +12,10 @@ public:
             umap[c]++;
         }
 
-        for(auto&it:umap){
+        for(auto& it:umap){
             char c=it.first;
             int n=it.second;
+
             bucket[n].append(n,c);
         }
 
