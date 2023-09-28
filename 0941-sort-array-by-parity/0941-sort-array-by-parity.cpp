@@ -6,20 +6,18 @@ public:
         vector<int>even;
         vector<int>odd;
 
-        for(int x:nums){
-            if(x%2==0){
-                even.push_back(x);
+        for(auto i:nums){
+            if(i&1){ // i&1 is TRUE (i&1==1)
+                odd.push_back(i);
             }
-
             else{
-                odd.push_back(x);
+                even.push_back(i);
             }
         }
-
-        for(int x:odd){
-            even.push_back(x);
+        while(!odd.empty()){
+            even.push_back(odd.back());
+            odd.pop_back();
         }
-
         return even;
     }
 };
