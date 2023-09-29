@@ -1,23 +1,17 @@
 class Solution {
 public:
     vector<int> sortArrayByParity(vector<int>& nums) {
-        // Time Complexity : O(N) & Space Complexity : O(N)
+        // Time Complexity : O(N) & Space Complexity : O(1)
 
-        vector<int>even;
-        vector<int>odd;
+        int evenIndex=0;
 
-        for(auto i:nums){
-            if(i&1){ // i&1 is TRUE (i&1==1)
-                odd.push_back(i);
-            }
-            else{
-                even.push_back(i);
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]%2==0){
+                swap(nums[i],nums[evenIndex]);
+                evenIndex++;
             }
         }
-        while(!odd.empty()){
-            even.push_back(odd.back());
-            odd.pop_back();
-        }
-        return even;
+
+        return nums;
     }
 };
