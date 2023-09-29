@@ -1,14 +1,24 @@
 class Solution {
 public:
     vector<int> sortArrayByParity(vector<int>& nums) {
-        // Time Complexity : O(N) & Space Complexity : O(1)
+        // Two Pointer's Approach : Time Complexity : O(N) & Space Complexity : O(1)
 
-        int evenIndex=0;
+        int i=0,j=nums.size()-1;
 
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]%2==0){
-                swap(nums[i],nums[evenIndex]);
-                evenIndex++;
+        while(i<j){
+            if(nums[i]%2==1 && nums[j]%2==0){
+                swap(nums[i],nums[j]);
+                i++;
+                j--;
+            }
+
+            else if(nums[i]%2==0){
+                i++;
+            }
+
+            else{
+                // i and j, both pointing towards odd numbers
+                j--;
             }
         }
 
