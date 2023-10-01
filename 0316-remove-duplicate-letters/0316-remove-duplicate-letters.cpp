@@ -12,12 +12,14 @@ public:
         stack<char>st;
 
         for(int i=0;i<s.length();i++){
-
+            // if the current character is already considered
             if(considered[s[i]-'a']==true){
                 continue;
             }
 
+            // if the current character is not already considered
             while(st.size()>0 && st.top()>s[i] && i<lastIndex[st.top()-'a']){
+                // smallest in lexicographical order && the current index is not the last index of the current character
                 considered[st.top()-'a']=false;
                 st.pop();
             }
