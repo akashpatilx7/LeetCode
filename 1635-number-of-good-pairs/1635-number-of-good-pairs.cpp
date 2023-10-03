@@ -1,16 +1,20 @@
 class Solution {
 public:
     int numIdenticalPairs(vector<int>& nums) {
-        // Time Complexity : O(N*N) & Space Complexity : O(1)
+        // Time Complexity : O(N) & Space Complexity : O(N)
 
-        int n=nums.size();
+        unordered_map<int,int>umap;
         int goodPairs=0;
 
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                if(nums[i]==nums[j]){
-                    goodPairs++;
-                }
+        for(int x:nums){
+            if(umap.find(x)!=umap.end()){
+                // the current number is already present in the unordered map
+                goodPairs+=umap[x];
+                umap[x]++;
+            }
+
+            else{
+                umap[x]=1;
             }
         }
         return goodPairs;
