@@ -1,22 +1,21 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        // Time Complexity : O(N) & Space Complexity : O(1)
+        // Time Complexity : O(logN) & Space Complexity : O(1)
 
-        int ans=1;
+        long long low=1, high=x;
 
-        if(x==0){
-            ans=0;
-        }
+        while(low<=high){
+            long long mid=(low+high)/2;
+            long long val=mid*mid;
 
-        for(long i=1;i<=x;i++){
-            if(i*i<=x){
-                ans=i;
+            if(val<=x){
+                low=mid+1;
             }
             else{
-                break;
+                high=mid-1;
             }
         }
-        return ans;
+        return high;
     }
 };
