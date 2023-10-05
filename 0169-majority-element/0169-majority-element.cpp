@@ -1,12 +1,21 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        // Time Complexity : O(NlogN) & Space Complexity : O(1)
+        // Time Complexity : O(N) & Space Complexity : O(N)
 
-        // LOGIC : As the question defines Majority Element to be appearing more than floor(n/2) times, after sorting the array, the majority element will always be in the middle, from wherever its group is starting in the array! (at front, at back, in middle)
-        
         int n=nums.size();
-        sort(nums.begin(),nums.end());
-        return nums[(int) n/2];
+        int majorityElement=0;
+        unordered_map<int,int>umap;
+
+        for(auto x:nums){
+            umap[x]++;
+        }
+
+        for(auto x:umap){
+            if(x.second>floor(n/2)){
+                majorityElement=x.first;
+            }
+        }
+        return majorityElement;
     }
 };
