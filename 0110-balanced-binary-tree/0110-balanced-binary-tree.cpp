@@ -29,21 +29,22 @@ public:
             return true;
         }
 
+        // calculate the left & right height for checking balanced binary tree
         int leftHeight=maxDepth(root->left);
         int rightHeight=maxDepth(root->right);
 
+        // condition for balanced binary tree
         if(abs(leftHeight-rightHeight)>1){
             return false;
         }
 
+        // check if the left & right parts are balanced
         bool leftPart=isBalanced(root->left);
         bool rightPart=isBalanced(root->right);
 
         if(!leftPart || !rightPart){
             return false;
         }
-
         return true;
-
     }
 };
