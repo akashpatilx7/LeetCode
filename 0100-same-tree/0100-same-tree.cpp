@@ -13,11 +13,11 @@ class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         // Time Complexity : O(N) & Space Complexity : O(N) 
-
         if(p==NULL || q==NULL){
+            // will return true/false accordingly
             return (p==q);
         }
-
+        
         return (p->val==q->val)
         && isSameTree(p->left,q->left)
         && isSameTree(p->right,q->right);
