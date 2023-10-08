@@ -10,38 +10,26 @@
  * };
  */
 class Solution {
-public:
-    int maxDepth(TreeNode* root){
-        // Time Complexity : O(N*N) & Space Complexity : O(N)
-
-        if (root==NULL){
+private:
+    int height(TreeNode* node, int &diameter){
+        if(node==NULL){
             return 0;
         }
 
-        int leftHeight=maxDepth(root->left);
-        int rightHeight=maxDepth(root->right);
+        int lh=height(node->left,diameter);
+        int rh=height(node->right,diameter);
 
-        return 1+max(leftHeight,rightHeight);
+        diameter=max(diameter,lh+rh);
+
+        return 1+max(lh,rh);
     }
 
-    // IMP step
-    int maxi=0;
-
+public:
     int diameterOfBinaryTree(TreeNode* root) {
-        // DIAMETER OF A BINARY TREE : longest path between any two nodes which does not need to pass via root
-        
-        if(root==NULL){
-            return 0;
-        }
+        // Time Complexity : O(N) & Space Complexity : O(N)
 
-        int leftHeight=maxDepth(root->left);
-        int rightHeight=maxDepth(root->right);
-
-        maxi=max(maxi,leftHeight+rightHeight);
-
-        int leftPart=diameterOfBinaryTree(root->left);
-        int rightPart=diameterOfBinaryTree(root->right);
-
-        return maxi;
+        int diameter=0;
+        height(root,diameter);
+        return diameter;
     }
 };
