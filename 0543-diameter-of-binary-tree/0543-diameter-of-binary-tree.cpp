@@ -14,7 +14,7 @@ public:
     int maxDepth(TreeNode* root){
         // Time Complexity : O(N*N) & Space Complexity : O(N)
 
-        if(root==NULL){
+        if (root==NULL){
             return 0;
         }
 
@@ -29,7 +29,7 @@ public:
 
     int diameterOfBinaryTree(TreeNode* root) {
         // DIAMETER OF A BINARY TREE : longest path between any two nodes which does not need to pass via root
-
+        
         if(root==NULL){
             return 0;
         }
