@@ -1,8 +1,6 @@
 class Solution {
 public:
     vector<int> leftRightDifference(vector<int>& nums) {
-        // Time Complexity : O(N) & Space Complexity : O(N)
-
         vector<int>answer;
         int n=nums.size();
         int sum=0;
@@ -22,7 +20,7 @@ public:
             sum+=nums[i];
         }
 
-        // 3. calculate the absolute difference between the both
+        // 2. calculate the absolute difference between the both
         for(int i=0;i<n;i++){
             answer.push_back(abs(leftSum[i]-rightSum[i]));
         }
