@@ -1,8 +1,6 @@
 class Solution {
 public:
     int mostWordsFound(vector<string>& sentences) {
-        // Time Complexity : O(N*N) & Space Complexity : O(1)
-
         int maxi=0;
 
         for(string sentence:sentences){
