@@ -1,16 +1,20 @@
 class Solution {
 public:
     int numJewelsInStones(string jewels, string stones) {
-        // Time Complexity : O(N*N) & Space Complexity : O(1)
+        // Time Complexity : O(N) & Space Complexity : O(N) 
         
-        int count=0;
+        unordered_map<char,bool>umap;
+
         for(int i=0;i<jewels.length();i++){
-            for(int j=0;j<stones.length();j++){
-                if(jewels[i]==stones[j]){
-                    count++;
-                }
+            umap[jewels[i]]=true;
+        }
+
+        int count=0;
+        for(int i=0;i<stones.length();i++){
+            if(umap[stones[i]]==true){
+                count++;
             }
-        }  
+        }
         return count;
     }
 };
