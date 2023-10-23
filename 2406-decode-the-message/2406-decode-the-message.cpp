@@ -12,6 +12,7 @@ public:
             }
 
             if(umap.count(i)==0){
+                // assigns the first unique character in the key to 'a'
                 umap[i]=ch;
                 ch++;
             }
