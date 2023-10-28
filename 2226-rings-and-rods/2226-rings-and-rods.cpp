@@ -2,30 +2,18 @@ class Solution {
 public:
     int countPoints(string rings) {
         // Time Complexity : O(N) & Space Complexity : O(N)
-
-        int redCount[10]={0};
-        int blueCount[10]={0};
-        int greenCount[10]={0};
-
-        for(int i=0;i<rings.size();i+=2){
-            char color=rings[i];
-            int index=rings[i+1]-'0';
-
-            if(color=='R'){
-                redCount[index]++;
-            }
-            else if(color=='G'){
-                greenCount[index]++;
-            }
-            else if(color=='B'){
-                blueCount[index]++;
-            }
+         
+        unordered_map<int,unordered_set<char>>umap;
+        for(int i=1;i<rings.length();i+=2){
+            umap[rings[i]-'0'].insert(rings[i-1]);
         }
 
         int count=0;
         for(int i=0;i<10;i++){
-            if(redCount[i]>0 && blueCount[i]>0 && greenCount[i]>0){
-                count++;
+            if(umap.find(i)!=umap.end()){
+                if(umap.at(i).size()==3){
+                    count++;
+                }
             }
         }
         return count;
