@@ -2,22 +2,23 @@ class Solution {
 public:
     int countHomogenous(string s) {
         // Time Complexity : O(N) & Space Complexity : O(1)
-
+        
         long long int MOD=1000000007;
-        int ans=s.length();
-        int cnt=1;
+        long long int res=0;
+        int left=0, right=0;
 
-        for(int i=1;i<s.length();i++){
-            if(s[i]==s[i-1]){
-                ans+=cnt;
-                ans%=MOD;
-                cnt++;
+        while(right<s.length()){
+            if(s[left]==s[right]){
+                res+=right-left+1;
+                right++;
             }
 
             else{
-                cnt=1;
+                left=right;
+                res+=1;
+                right++;
             }
         }
-        return ans;
+        return res%MOD;
     }
 };
